@@ -8,7 +8,7 @@ const connection = new Connection('http://localhost:8899');
 let from_kp = getKeyPair(
     'keypair',
     'keypair',
-    4
+    2
 );
 
 let to_tp = getKeyPair(
