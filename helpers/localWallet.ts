@@ -3,7 +3,7 @@ import { getKeyPair } from "./getKeyPair";
 
 const connection = new Connection("http://localhost:8899");
 
-const kp = getKeyPair('newKeyPair','keychain',2);
+const kp = getKeyPair('newKeyPair','keychain',1);
 
 async function fundLocalWallet(){
     const signature = await connection.requestAirdrop(

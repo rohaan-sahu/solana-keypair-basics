@@ -5,18 +5,9 @@ import { getKeyPair } from './getKeyPair';
 // https://api.devnet.solana.com
 const connection = new Connection('http://localhost:8899');
 
-let from_kp = getKeyPair(
-    'newKeyPair',
-    'keychain',
-    1
-);
+let from_kp = getKeyPair('newKeyPair','keychain',1);
 
-let to_tp = getKeyPair(
-    'newKeyPair',
-    'keychain',
-    2
-);
-
+let to_tp = getKeyPair('newKeyPair','keychain',2);
 
 const transaction = new Transaction().add(
   SystemProgram.transfer({

@@ -8,8 +8,8 @@ import { saveMnemonic } from "./saveNemonic";
 
 const generate = bip39.generateMnemonic();
 
-let serial = 3;
-saveMnemonic('mnemonic',serial,generate)
+let serial = 4;
+//saveMnemonic('mnemonic',serial,generate)
 const storedMnemonic = getMnemonic('mnemonic',2);
 
 //let seedPhrase = array;

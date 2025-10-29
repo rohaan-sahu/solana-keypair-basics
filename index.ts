@@ -1,3 +1,67 @@
+import { Connection, LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { SystemProgram, Transaction } from "@solana/web3.js";
+import { getKeyPair } from "./helpers/getKeyPair";
+
+const kp1 = getKeyPair('newKeyPair','keychain',1);
+const kp2 = getKeyPair('newKeyPair','keychain',2);
+
+console.log("Public key\n")
+console.log("Kp1: ",kp1.publicKey.toString());
+console.log("Kp2: ",kp2.publicKey.toString());
+
+const funds = 2 *LAMPORTS_PER_SOL;
+
+const connection = new Connection('http://localhost:8899');
+const transaction = new Transaction().add(
+	SystemProgram.transfer({
+		fromPubkey: kp1.publicKey,
+		toPubkey:kp2.publicKey,
+		lamports: 2*LAMPORTS_PER_SOL
+	})
+);
+
+async function fundKp2FromKp1(){
+	let transactionSignature = await connection.sendTransaction(
+		transaction,
+		[kp1]
+	);
+	await connection.confirmTransaction(transactionSignature)
+	.then(()=> {
+		console.log(
+			`https://explorer.solana.com/tx/${transactionSignature}?cluster=custom`
+		);
+	})
+}
+
+fundKp2FromKp1()
+
+/*
+async function airDropSolToKp1(){
+	let transactionSignature = await connection.requestAirdrop(
+		kp1.publicKey,
+		funds
+	);
+	console.log("transaction sig: \n",transactionSignature);
+}
+
+airDropSolToKp1()
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 import {Keypair} from "@solana/web3.js";
 import bs58 from 'bs58';
 
@@ -7,9 +71,6 @@ import { testingMnemonics } from "./helpers/testingMnemonics";
 
 const keyPair = Keypair.generate();
 
-//const keyPair = Keypair.fromSeed(new Uint8Array([0,0,0,0]));
-
-//testingMnemonics()
 
 let serial = 3;
 const keyPairInFile = saveKeypairToFile(
@@ -23,7 +84,6 @@ console.log("\nNew Keypair set - saveKeyPairToFile: ");
 console.log(keyPair.publicKey.toBase58());
 console.log(bs58.encode(keyPair.secretKey));
 
-
 let kp = getKeyPair(
 	'newKeyPair',
 	'keychain',
@@ -32,6 +92,8 @@ let kp = getKeyPair(
 
 console.log("\nKeypair fetched - getKeyPair: ");
 console.log(kp.publicKey.toBase58());
+
+*/
 
 
 // console.log("Keypair generated")

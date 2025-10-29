@@ -21,7 +21,7 @@ const transaction = new Transaction().add(
   SystemProgram.transfer({
     fromPubkey: from_kp.publicKey,
     toPubkey: to_tp.publicKey,
-    lamports: 0.1 * LAMPORTS_PER_SOL // 0.1 SOL
+    lamports: 1 * LAMPORTS_PER_SOL // 0.1 SOL
   })
 );
 
