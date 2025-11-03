@@ -4,11 +4,22 @@ import { getKeyPair } from "./helpers/getKeyPair";
 
 const kp1 = getKeyPair('newKeyPair','keychain',1);
 const kp2 = getKeyPair('newKeyPair','keychain',2);
+const kp3 = getKeyPair('newKeyPair','keychain',3);
 
 console.log("Public key\n")
 console.log("Kp1: ",kp1.publicKey.toString());
 console.log("Kp2: ",kp2.publicKey.toString());
+console.log("Kp3: ",kp3.publicKey.toString());
 
+
+
+
+
+
+
+
+
+/*
 const funds = 2 *LAMPORTS_PER_SOL;
 
 const connection = new Connection('http://localhost:8899');
@@ -35,7 +46,7 @@ async function fundKp2FromKp1(){
 
 fundKp2FromKp1()
 
-/*
+
 async function airDropSolToKp1(){
 	let transactionSignature = await connection.requestAirdrop(
 		kp1.publicKey,

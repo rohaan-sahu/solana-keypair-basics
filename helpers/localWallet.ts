@@ -8,7 +8,7 @@ const kp = getKeyPair('newKeyPair','keychain',1);
 async function fundLocalWallet(){
     const signature = await connection.requestAirdrop(
         kp.publicKey,
-        2* LAMPORTS_PER_SOL
+        10* LAMPORTS_PER_SOL
     );
     await connection.confirmTransaction(signature)
         .then(
